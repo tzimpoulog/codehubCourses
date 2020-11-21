@@ -1,18 +1,20 @@
-import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-import { BreadcrumbItem } from 'reactstrap';
-import  Landing  from './Landing';
-import  Courses  from './Courses';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { BreadcrumbItem } from "reactstrap";
+import Landing from "./Landing";
+import Courses from "./Courses";
+import Header from "./Header";
 
 function App() {
   return (
     <div>
-     <BrowserRouter>
-       <div>
-         <Route path="/" exact component={Landing} />
-         <Route path="/courses" component={Courses} />
-       </div>
-     </BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Route path="/" exact component={Landing} />
+          <Route path="/courses" component={Courses} />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
