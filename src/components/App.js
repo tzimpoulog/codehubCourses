@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Landing from "./Landing";
 import Courses from "./Courses";
 import Header from "./Header";
+import CourseDetails from './CourseDetails';
+
 
 function App() {
   return (

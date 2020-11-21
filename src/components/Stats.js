@@ -17,7 +17,6 @@ const Stats = () => {
           }
         })
         .then((data) => {
-          console.log(data);
           setStats(data);
           //setIsLoading(false);
         })
@@ -30,9 +29,9 @@ const Stats = () => {
   }, []);
 
   return (
-    <div>
-      <Row>{stats.map((stat) => 
-        <Col sm="3" style={{textAlign: 'center'}} key={stat.id}>
+    <div >
+      <Row >{stats.map((stat) => 
+        <Col md="3" style={{textAlign: 'center'}} key={stat.id}>
         <h5 style={{textTransform: 'uppercase'}}>{stat.title} <Badge color="secondary">{stat.amount}</Badge></h5>
         </Col>
       )}</Row>
