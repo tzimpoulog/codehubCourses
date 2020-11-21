@@ -1,10 +1,11 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 
-function App() {
+const Landing = () => {
   return (
     <div>
-      <Jumbotron>
+     <h1>Landing page</h1>
+     <Jumbotron>
         <h1 className="display-3">Hello, world!</h1>
         <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr className="my-2" />
@@ -17,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default Landing;
