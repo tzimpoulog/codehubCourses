@@ -16,3 +16,13 @@ code {
 .color-text{
   color: #F15B41;
 }
+
+.footer{
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #F15B41;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

@@ -52,12 +52,12 @@ const Courses = (props) => {
                   alt="Card image cap"
                 />
                 <CardBody>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
+                  <CardSubtitle tag="h6" className="mb-2 color-text">
                     Price: {cour.title}
                   </CardSubtitle>
-                  <CardText>Price: {cour.price.normal} €</CardText>
-                  <Button>
-                    <Link style={{ textDecoration: "none" }}
+                  <CardText className="color-text">Price: {cour.price.normal} €</CardText>
+                  <Button  style={{ background:'#F15B41'}}>
+                    <Link style={{ textDecoration: "none", color: '#fff' }}
                       to={{pathname: `/courses/${cour.id}`}}>
                       Learn more{" "}
                     </Link>

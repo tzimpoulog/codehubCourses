@@ -4,6 +4,8 @@ import Landing from "./Landing";
 import Courses from "./Courses";
 import Header from "./Header";
 import CourseDetails from "./CourseDetails";
+import AddCourse from './AddCourse';
+import Footer from "./Footer"
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
             <Route path="/courses/:id" component={CourseDetails} />
             <Route path="/courses" component={Courses} />
           </Switch>
+          <Route path="/add-course" component={AddCourse} />
         </div>
       </BrowserRouter>
     </div>
