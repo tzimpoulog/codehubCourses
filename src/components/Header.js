@@ -29,6 +29,11 @@ const Header = (props) => {
               <Link to='/courses'>All Courses</Link>
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink>
+              <Link to='/add-course'>Add Course</Link>
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

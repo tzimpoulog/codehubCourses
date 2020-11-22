@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../api";
-import { Button } from "reactstrap";
-import JumbotronContent from "./JumbotronContent";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Card, Button, CardTitle, CardText } from "reactstrap";
 
 function CourseDetails() {
   const [course, setCourse] = useState([]);
@@ -11,13 +9,13 @@ function CourseDetails() {
   const courseId = useParams();
 
   function sayHello() {
-    alert('Hello!');
+    alert("Hello!");
   }
 
   const deleteCourse = () => {
-    fetch(API + "courses/" + courseId.id,{
-        method: 'DELETE',
-      })
+    fetch(API + "courses/" + courseId.id, {
+      method: "DELETE",
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -26,51 +24,55 @@ function CourseDetails() {
         }
       })
       .then((data) => {
-        console.log('Course deleted!!!');
+        console.log("Course deleted!!!");
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const fetchData = () => {
+    fetch(API + "courses/" + courseId.id)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong ...");
+        }
+      })
+      .then((data) => {
+        var instr = [];
+        instr = data.instructors;
+        var instructorParams = "?";
+        instr.forEach(function (e) {
+          instructorParams = instructorParams + "id=" + e.toString() + "&";
+        });
+        setCourse(data);
+        const fetchInstructors = () => {
+          fetch(API + "instructors/" + instructorParams)
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error("Something went wrong ...");
+              }
+            })
+            .then((data) => {
+              setInstructor(data);
+              console.log(data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        };
+        fetchInstructors();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch(API + "courses/" + courseId.id)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("Something went wrong ...");
-          }
-        })
-        .then((data) => {
-          setCourse(data);
-          const fetchInstructors = () => {
-            fetch(API + "instructors/")
-              .then((response) => {
-                if (response.ok) {
-                  return response.json();
-                } else {
-                  throw new Error("Something went wrong ...");
-                }
-              })
-              .then((data) => {
-                console.log(data);
-                setInstructor(data);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          };
-
-          fetchInstructors();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
     fetchData();
   }, []);
   return (
@@ -100,7 +102,33 @@ function CourseDetails() {
           </Row>
           <Row>
             <Col>
-              <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>Delete</Button>
+              <h2>Instructors</h2>
+            </Col>
+          </Row>
+          <Row>
+          {instructor.map((inst) =>
+            <Col>
+                <Card body>
+                  <CardTitle className="color-text" tag="h5">{inst.name?.first} {inst.name?.last}</CardTitle>
+                  <CardText>
+                    {inst.bio}
+                  </CardText>
+                  <CardText>
+                    Email: {inst.email}
+                  </CardText>
+                  <CardText>
+                    Birthday: {inst.dob}
+                  </CardText>
+                  <Button>LinkedIn</Button>
+                </Card>
+            </Col>
+            )}
+          </Row>
+          <Row>
+            <Col>
+              <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>
+                Delete
+              </Button>
             </Col>
           </Row>
         </Container>
