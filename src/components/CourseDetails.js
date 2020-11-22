@@ -102,7 +102,7 @@ function CourseDetails() {
           </Row>
           <Row>
             <Col>
-              <h2>Instructors</h2>
+              <h2>Instructor{instructor.length > 1 ? 's' : null}</h2>
             </Col>
           </Row>
           <Row>
