@@ -8,10 +8,10 @@ import { Container } from "reactstrap";
 const Landing = () => {
   return (
     <div>
-      <Jumbotron>
+    <Container>
+      <Jumbotron style={{ background:'#F15B41', color: '#fff', marginTop:'30px'}}>
         <JumbotronContent />
       </Jumbotron>
-      <Container>
         <Stats />
         <TableCourses />
       </Container>

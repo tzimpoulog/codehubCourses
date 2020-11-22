@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Landing from "./Landing";
 import Courses from "./Courses";
 import Header from "./Header";
-import CourseDetails from './CourseDetails';
-
+import CourseDetails from "./CourseDetails";
 
 function App() {
   return (
@@ -13,7 +12,10 @@ function App() {
         <div>
           <Header />
           <Route path="/" exact component={Landing} />
-          <Route path="/courses" component={Courses} />
+          <Switch>
+            <Route path="/courses/:id" component={CourseDetails} />
+            <Route path="/courses" component={Courses} />
+          </Switch>
         </div>
       </BrowserRouter>
     </div>

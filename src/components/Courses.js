@@ -58,7 +58,7 @@ const Courses = (props) => {
                   <CardText>Price: {cour.price.normal} €</CardText>
                   <Button>
                     <Link style={{ textDecoration: "none" }}
-                      to={{pathname: `/${cour.id}`}}>
+                      to={{pathname: `/courses/${cour.id}`}}>
                       Learn more{" "}
                     </Link>
                   </Button>

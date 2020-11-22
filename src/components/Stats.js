@@ -32,7 +32,7 @@ const Stats = () => {
     <div >
       <Row >{stats.map((stat) => 
         <Col md="3" style={{textAlign: 'center'}} key={stat.id}>
-        <h5 style={{textTransform: 'uppercase'}}>{stat.title} <Badge color="secondary">{stat.amount}</Badge></h5>
+        <h5 style={{textTransform: 'uppercase'}}>{stat.title} <Badge style={{background:'#F15B41'}} pill>{stat.amount}</Badge></h5>
         </Col>
       )}</Row>
     </div>

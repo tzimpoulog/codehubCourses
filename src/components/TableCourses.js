@@ -1,6 +1,7 @@
-import React,{ useEffect, useState} from 'react';
-import { Table, Button  } from 'reactstrap';
-import {API} from '../api';
+import React, { useEffect, useState } from "react";
+import { Table, Button } from "reactstrap";
+import { Link } from "react-router-dom";
+import { API } from "../api";
 
 const TableCourses = (props) => {
   const [courses, setCourses] = useState([]);
@@ -29,7 +30,7 @@ const TableCourses = (props) => {
   }, []);
 
   return (
-    <Table style={{marginTop: '50px'}}>
+    <Table hover style={{ marginTop: "50px" }}>
       <thead>
         <tr>
           <th></th>
@@ -41,19 +42,30 @@ const TableCourses = (props) => {
         </tr>
       </thead>
       <tbody>
-      {courses.map((cour) =>
-        <tr key={cour.id}>
-          <th scope="row"></th>
-          <td>{cour.title}</td>
-          <td>{cour.open}</td>
-          <td>{cour.price.normal} €</td>
-          <td>{cour.dates.start_date} - {cour.dates.end_date}</td>
-          <td>Button</td>
+        {courses.map((cour) => (
+          <tr key={cour.id}>
+            <th scope="row"></th>
+            <td>{cour.title}</td>
+            <td>{cour.open}</td>
+            <td>{cour.price.normal} €</td>
+            <td>
+              {cour.dates.start_date} - {cour.dates.end_date}
+            </td>
+            <td>
+              <Button style={{ background:'#F15B41'}}>
+                <Link
+                  style={{ textDecoration: "none", color: '#fff' }}
+                  to={{ pathname: `/courses/${cour.id}` }}
+                >
+                  Learn more
+                </Link>
+              </Button>
+            </td>
           </tr>
-        )}
+        ))}
       </tbody>
     </Table>
   );
-}
+};
 
 export default TableCourses;
