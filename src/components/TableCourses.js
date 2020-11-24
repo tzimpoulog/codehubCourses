@@ -46,10 +46,10 @@ const TableCourses = (props) => {
           <tr key={cour.id}>
             <th scope="row"></th>
             <td>{cour.title}</td>
-            <td>{cour.open}</td>
-            <td>{cour.price.normal} €</td>
+            <td>{cour.open ? 'YES' : 'NO'}</td>
+            <td>{cour.price?.normal} €</td>
             <td>
-              {cour.dates.start_date} - {cour.dates.end_date}
+              {cour.dates?.start_date} - {cour.dates?.end_date}
             </td>
             <td>
               <Button style={{ background:'#F15B41'}}>

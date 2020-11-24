@@ -102,6 +102,13 @@ function CourseDetails() {
           </Row>
           <Row>
             <Col>
+              <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>
+                Delete
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <h2>Instructor{instructor.length > 1 ? 's' : null}</h2>
             </Col>
           </Row>
@@ -123,13 +130,6 @@ function CourseDetails() {
                 </Card>
             </Col>
             )}
-          </Row>
-          <Row>
-            <Col>
-              <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>
-                Delete
-              </Button>
-            </Col>
           </Row>
         </Container>
       </div>
