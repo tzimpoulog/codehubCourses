@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../api";
 import { Container, Row, Col, Card, Button, CardTitle, CardText } from "reactstrap";
+import { Link } from "react-router-dom";
 
 function CourseDetails() {
   const [course, setCourse] = useState([]);
   const [instructor, setInstructor] = useState([]);
   const courseId = useParams();
-
-  function sayHello() {
-    alert("Hello!");
-  }
 
   const deleteCourse = () => {
     fetch(API + "courses/" + courseId.id, {
@@ -105,6 +102,9 @@ function CourseDetails() {
               <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>
                 Delete
               </Button>
+              <Button style={{ background: "#F15B41" }}>
+              <Link to={{ pathname: `/edit-course/${course.id}` }}>Edit</Link>
+              </Button>
             </Col>
           </Row>
           <Row>
@@ -115,7 +115,7 @@ function CourseDetails() {
           <Row>
           {instructor.map((inst) =>
             <Col>
-                <Card body>
+                <Card body key={inst.id}>
                   <CardTitle className="color-text" tag="h5">{inst.name?.first} {inst.name?.last}</CardTitle>
                   <CardText>
                     {inst.bio}

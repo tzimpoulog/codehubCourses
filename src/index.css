@@ -21,8 +21,16 @@ code {
   margin-top: 1rem;
   padding: 1rem;
   background-color: #F15B41;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
 }
+
+.table-icon-check{
+  font-size: 20px;
+  color: green;
+}
+
+.table-icon-uncheck{
+  font-size: 20px;
+  color: red;
+}
+

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { API } from "../api";
+import { BiCalendarCheck,BiCalendarX } from 'react-icons/bi';
 
 const TableCourses = (props) => {
   const [courses, setCourses] = useState([]);
@@ -46,7 +47,7 @@ const TableCourses = (props) => {
           <tr key={cour.id}>
             <th scope="row"></th>
             <td>{cour.title}</td>
-            <td>{cour.open ? 'YES' : 'NO'}</td>
+            <td style={{textAlign: 'center'}}>{cour.open ? <BiCalendarCheck className="table-icon-check"/> : <BiCalendarX className="table-icon-uncheck" />}</td>
             <td>{cour.price?.normal} €</td>
             <td>
               {cour.dates?.start_date} - {cour.dates?.end_date}

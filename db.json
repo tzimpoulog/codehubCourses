@@ -54,7 +54,7 @@
         "end_date": "2020-10-27"
       },
       "duration": "4 Fridays and 4 Saturdays",
-      "open": true,
+      "open": false,
       "instructors": [
         "01",
         "02"
