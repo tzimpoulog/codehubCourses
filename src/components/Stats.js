@@ -1,13 +1,12 @@
-import React,{ useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
-import { Badge } from 'reactstrap';
-import {API} from '../api';
-import { FaUserGraduate, FaChalkboardTeacher,FaChair } from "react-icons/fa";
-
+import { Badge } from "reactstrap";
+import { API } from "../api";
+import { FaUserGraduate, FaChalkboardTeacher, FaChair } from "react-icons/fa";
+import StatsDisplay from "./StatsDisplay";
 
 const Stats = () => {
   const [stats, setStats] = useState([]);
-  const [ic, setIcon] = useState([]);
   let icon = null;
 
   const fetchData = () => {
@@ -21,7 +20,7 @@ const Stats = () => {
       })
       .then((data) => {
         setStats(data);
-        returnIcons();
+        // returnIcons();
         //setIsLoading(false);
       })
       .catch((error) => {
@@ -29,42 +28,21 @@ const Stats = () => {
       });
   };
 
-
   useEffect(() => {
     fetchData();
   }, []);
 
-const returnIcons = () => {
-  stats.forEach((stat) =>{
-    switch (stat.title) {
-      case 'students':
-        icon = <FaUserGraduate />;
-        break;
-  
-      case 'courses':
-        icon = <FaChalkboardTeacher />;
-        break;
-  
-      case 'instructors':
-        icon = <FaChalkboardTeacher />;
-        break;
-  
-      default:
-        icon = <FaChair />;
-        break;
-    }
-    console.log(icon);
-  })
-}
 
   return (
-    <div >
-      <Row >{stats.map((stat) => 
-        <Col md="3" style={{textAlign: 'center'}} key={stat.id}> 
-         {icon}
-        <h5 style={{textTransform: 'uppercase'}}>{stat.title} <Badge style={{background:'#F15B41'}} pill>{stat.amount}</Badge></h5>
-        </Col>
-      )}</Row>
+    <div>
+      <Row>
+          {stats.map((item) => (
+            <Col md="3" className="mb-3" style={{ textAlign: "center" }}  key={item.id}>
+            <StatsDisplay data={item} />
+            </Col>
+          ) )}
+       
+      </Row>
     </div>
   );
 };
