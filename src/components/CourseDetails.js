@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { API } from "../api";
 import { Container, Row, Col, Card, Button, CardTitle, CardText } from "reactstrap";
 import { Link } from "react-router-dom";
+import { FaLinkedin } from "react-icons/fa";
+
 
 function CourseDetails() {
   const [course, setCourse] = useState([]);
@@ -99,16 +101,6 @@ function CourseDetails() {
           </Row>
           <Row>
             <Col>
-              <Button onClick={deleteCourse} style={{ background: "#F15B41" }}>
-                Delete
-              </Button>
-              <Button style={{ background: "#F15B41" }}>
-              <Link to={{ pathname: `/edit-course/${course.id}` }}>Edit</Link>
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
               <h2>Instructor{instructor.length > 1 ? 's' : null}</h2>
             </Col>
           </Row>
@@ -126,10 +118,20 @@ function CourseDetails() {
                   <CardText>
                     Birthday: {inst.dob}
                   </CardText>
-                  <Button>LinkedIn</Button>
+                  <a href="https://www.linkedin.com/sample" target="_blank" style={{color: "#fff"}}><FaLinkedin style={{color: '#0A66C2', fontSize: '20px'}}/></a>
                 </Card>
             </Col>
             )}
+          </Row>
+          <Row style={{marginBottom: '30px', marginTop: '30px'}}>
+            <Col>
+              <Button onClick={deleteCourse} style={{ background: "#F15B41", width: '80px', marginRight: '5px' }}>
+                Delete
+              </Button>
+              <Button style={{ background: "#F15B41",  width: '80px' }}>
+              <Link to={{ pathname: `/edit-course/${course.id}` }} style={{color: "#fff"}}>Edit</Link>
+              </Button>
+            </Col>
           </Row>
         </Container>
       </div>

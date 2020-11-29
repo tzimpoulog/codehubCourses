@@ -5,7 +5,6 @@ import Courses from "./Courses";
 import Header from "./Header";
 import CourseDetails from "./CourseDetails";
 import AddCourse from './AddCourse';
-import Footer from "./Footer";
 import EditCourse from './EditCourse';
 
 function App() {

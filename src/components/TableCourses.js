@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { API } from "../api";
-import { BiCalendarCheck,BiCalendarX } from 'react-icons/bi';
+import { BiCalendarCheck, BiCalendarX } from 'react-icons/bi';
+import { FaEye, FaEdit } from "react-icons/fa";
 
 const TableCourses = (props) => {
   const [courses, setCourses] = useState([]);
@@ -53,12 +54,20 @@ const TableCourses = (props) => {
               {cour.dates?.start_date} - {cour.dates?.end_date}
             </td>
             <td>
-              <Button style={{ background:'#F15B41'}}>
+              <Button style={{ background:'#F15B41',marginRight: '5px'}}>
                 <Link
                   style={{ textDecoration: "none", color: '#fff' }}
                   to={{ pathname: `/courses/${cour.id}` }}
                 >
-                  Learn more
+                  <FaEye />
+                </Link>
+              </Button>
+              <Button style={{ background:'#F15B41'}}>
+                <Link
+                  style={{ textDecoration: "none", color: '#fff' }}
+                  to={{ pathname: `/edit-course/${cour.id}` }}
+                >
+                  <FaEdit />
                 </Link>
               </Button>
             </td>

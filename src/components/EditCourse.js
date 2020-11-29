@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../api";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Row, Col, Container } from "reactstrap";
-import { useInput } from "./hooks/useInput";
+import { Form, FormGroup, Label, Input} from "reactstrap";
+import { Container } from "reactstrap";
 import { useHistory, useParams } from "react-router-dom";
 
 const EditCourse = () => {
@@ -12,11 +11,11 @@ const EditCourse = () => {
   const [title, setTitle] = useState("");
   const [imagePath, setImagePath] = useState("");
   const [duration, setDuration] = useState("");
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
   const [instructors, setInstructors] = useState([]);
   const [description, setDescription] = useState("");
   const [priceNormal, setPriceNormal] = useState("");
-  const [priceEarlyBird, setPriceEarlyBird] = useState("");
+  const [priceEarlyBird, setPriceEarlyBird] = useState("5445");
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
 
@@ -64,10 +63,12 @@ const EditCourse = () => {
         setDuration(data.duration);
         setImagePath(data.imagePath);
         setDescription(data.description);
-        setPriceNormal(data.price?.normal);
+        setPriceNormal(data.price.normal);
         setPriceEarlyBird(data.price.early_bird);
         setDateStart(data.dates.start_date);
         setDateEnd(data.dates.end_date);
+        setInstructors(data.instructors);
+        //setBookable(open)
       })
       .catch((error) => {
         console.log(error);
@@ -172,15 +173,15 @@ const EditCourse = () => {
              />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="priceNormal" value={priceNormal}
-            onChange={(e) => setPriceNormal(e.target.value)}
+            <Label htmlFor="priceNormal" 
             >Price Normal:</Label>
-            <Input type="text" />
+            <Input type="text" value={priceNormal}
+            onChange={(e) => setPriceNormal(e.target.value)} />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="priceEarlyBird" value={priceEarlyBird}
-            onChange={(e) => setPriceEarlyBird(e.target.value)}>Price Early Bird:</Label>
-            <Input type="text" />
+            <Label htmlFor="priceEarlyBird">Price Early Bird:</Label>
+            <Input type="text" value={priceEarlyBird}
+            onChange={(e) => setPriceEarlyBird(e.target.value)}/>
           </FormGroup>
         </FormGroup>
         {Object.keys(checkBookable).map((key) => (

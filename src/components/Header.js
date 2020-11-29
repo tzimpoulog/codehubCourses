@@ -19,7 +19,7 @@ const Header = (props) => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand>
-          <Link to="/"><img style={{height: '50px'}} src="/cropped-CodeHub-logo_320x132.png" /></Link>
+          <Link to="/"><img style={{height: '50px'}} src="/cropped-CodeHub-logo_320x132.png" alt="Logo"/></Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

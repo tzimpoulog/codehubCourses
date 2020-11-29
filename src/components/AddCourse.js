@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../api";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Row, Col, Container } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Container } from "reactstrap";
 import { useInput } from "./hooks/useInput";
 import { useHistory } from 'react-router-dom';
 
